@@ -1,13 +1,9 @@
-// Main JS
-
 // book array data
 let allShelves = [];
 
 // book html container
 const nowReadingContainer = document.getElementById("now-book-reading");
 const hasReadedContainer = document.getElementById("readed-book-almanac");
-
-// -----------------------------------------------
 
 // start from here
 document.addEventListener("DOMContentLoaded", function () {
@@ -30,8 +26,6 @@ window.addEventListener("beforeunload", function () {
   localStorage.setItem("bookLibrary", JSON.stringify(allShelves));
 });
 
-// -----------------------------------------------
-
 // submit book button - add new book
 function addNewBook() {
   const id = +new Date();
@@ -53,24 +47,21 @@ function addNewBook() {
 
   createBookElement(bookData);
 
-  // console.log(`added new book | total book is ${allShelves.length}`);
   return bookData;
 }
-
-// -----------------------------------------------
 
 // create a book html element
 function createBookElement(item) {
   const containerAddedBook = document.createElement("article");
   containerAddedBook.classList.add("container-book-item");
 
-  // create book description elements
+  // create book description html elements
   const bookDescElement = document.createElement("div");
   bookDescElement.innerHTML = `
     <h3>${item.title}</h3>
     <p>${item.author} - ${item.year}</p>`;
 
-  // build button templates
+  // build button templates html elements
   const actionButtons = document.createElement("div");
   actionButtons.classList.add("container-action");
 
@@ -121,14 +112,12 @@ function createBookElement(item) {
 function regenerateElement() {
   nowReadingContainer.innerHTML = "";
   hasReadedContainer.innerHTML = "";
-  // const
   for (item of allShelves) {
     createBookElement(item);
   }
-  // console.log("total book is", allShelves.length);
 }
 
-// button funcion action trigger
+// button function action triggers
 function markRead(item) {
   item.isComplete = true;
   regenerateElement();
