@@ -37,6 +37,7 @@ function onSubmitBook() {
   const makeActionButton = document.createElement("div");
   makeActionButton.classList.add("container-action");
 
+  // REVISI, dibuat individual ae ges
   if (!isComplete) {
     makeActionButton.innerHTML = `
     <button class='mark-readed-act'>Mark as Completed</button>

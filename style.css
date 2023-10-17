@@ -17,8 +17,24 @@ header {
 }
 
 main {
-    max-width: 768px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width:1650px) {
+    main {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    main .input-area,
+    .reading-area,
+    .readed-area {
+        min-width: 500px;
+    }
 }
 
 .card {
@@ -52,7 +68,7 @@ h2 {
 }
 
 .input-inline input {
-    width: 400px;
+    width: 350px;
     height: 40px;
     border-radius: 5px;
     border-color: teal;
