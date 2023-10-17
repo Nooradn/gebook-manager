@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeBook Manager</title>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>GeBook Manager</h1>
+    </header>
+    <main>
+      <!-- Input Area -->
+      <div class="input-area card">
+        <h2>Add New Book</h2>
+        <form id="input-book">
+          <div class="input-inline">
+            <label for="input-book-title">Book Title</label>
+            <input type="text" id="input-book-title" value="Judhul" required />
+          </div>
+          <div class="input-inline">
+            <label for="input-book-author">Book Author</label>
+            <input type="text" id="input-book-author" value="Penulihs" required />
+          </div>
+          <div class="input-inline">
+            <label for="input-book-year">Book Year</label>
+            <input type="number" id="input-book-year" value="6969" required />
+          </div>
+          <div class="input-inline">
+            <label for="book-completed-check">Is Completed?</label>
+            <div><input type="checkbox" id="book-completed-check" /></div>
+          </div>
+          <div class="button-wrapper">
+            <button id="submit-book" type="submit">Submit Book</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Search Book (Beta) -->
+      <div></div>
+
+      <!-- Now Book Reading -->
+      <div class="reading-area card">
+        <h2>Now Book Reading</h2>
+        <div id="now-book-reading" class="book-list">
+          <article class="container-book-item">
+            <h3>$Book Title</h3>
+            <p>$Book Author - </p>
+            <p>$Year</p>
+            <div class="container-action">
+              <button class="mark-readed-act">Mark as Completed</button>
+              <button hidden class="mark-unread-act">Unread</button>
+              <button class="delete-act">Delete Book</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Readed Book Almanac -->
+      <div class="readed-area card">
+        <h2>Readed Book Almanac</h2>
+        <div id="readed-book-almanac" class="book-list">
+          <article class="container-book-item">
+            <h3>$Book Title</h3>
+            <p>$Book Author - </p>
+            <p>$Year</p>
+            <div class="container-action">
+              <button hidden class="mark-readed-act">Mark as Completed</button>
+              <button class="mark-unread-act">Unread</button>
+              <button class="delete-act">Delete Book</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+    <script src="main.js"></script>
+  </body>
+</html>
