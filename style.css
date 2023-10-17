@@ -41,6 +41,7 @@ main {
 
 .card {
     margin: 25px;
+    min-width: 600px;
     padding-block: 25px;
     padding-inline: 50px;
     border-radius: 11px;
@@ -144,7 +145,7 @@ h2 {
 }
 
 .container-action button {
-    width: 200px;
+    width: 150px;
     height: 35px;
     cursor: pointer;
     color: #fff;
@@ -172,4 +173,5 @@ h2 {
 
 .container-action .delete-act {
     background-color: #c0392b;
+    margin-left: 15px;
 }

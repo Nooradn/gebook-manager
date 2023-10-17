@@ -1,8 +1,7 @@
 // Main JS
 
 // book array data
-const nowReadingShelf = [];
-const hasReadedShelf = [];
+const allShelves = [];
 
 // book html container
 const nowReadingContainer = document.getElementById("now-book-reading");
@@ -38,17 +37,11 @@ function addNewBook() {
     isComplete,
   };
 
-  // push data to relevant shelves
-  if (!isComplete) {
-    nowReadingShelf.push(bookData);
-  } else {
-    hasReadedShelf.push(bookData);
-  }
+  allShelves.push(bookData);
 
   createBookElement(bookData);
 
-  console.log("added new book");
-  console.log({ nowReadingShelf, hasReadedShelf });
+  // console.log(`added new book | total book is ${allShelves.length}`);
   return bookData;
 }
 
@@ -73,7 +66,7 @@ function createBookElement(item) {
   markReadBtn.classList.add("mark-readed-act");
   markReadBtn.innerText = "Mark Read";
   markReadBtn.addEventListener("click", function () {
-    // markRead(item.id);
+    markRead(item);
     console.log("clicked markRead", item.id);
   });
 
@@ -81,7 +74,7 @@ function createBookElement(item) {
   markUnreadBtn.classList.add("mark-unread-act");
   markUnreadBtn.innerText = "Mark Unread";
   markUnreadBtn.addEventListener("click", function () {
-    // markUnread(item.id);
+    markUnread(item);
     console.log("clicked markUnread", item.id);
   });
 
@@ -89,7 +82,7 @@ function createBookElement(item) {
   deleteBtn.classList.add("delete-act");
   deleteBtn.innerText = "Delete Book";
   deleteBtn.addEventListener("click", function () {
-    // deleteItem(item.id);
+    deleteItem(item);
     console.log("clicked deleteItem", item.id);
   });
 
@@ -109,5 +102,36 @@ function createBookElement(item) {
     nowReadingContainer.prepend(containerAddedBook);
   } else {
     hasReadedContainer.prepend(containerAddedBook);
+  }
+}
+
+// reset and regenerate html elements container
+function regenerateElement() {
+  nowReadingContainer.innerHTML = "";
+  hasReadedContainer.innerHTML = "";
+  // const
+  for (item of allShelves) {
+    createBookElement(item);
+  }
+  // console.log("total book is", allShelves.length);
+}
+
+// button funcion action trigger
+function markRead(item) {
+  item.isComplete = true;
+  regenerateElement();
+}
+
+function markUnread(item) {
+  item.isComplete = false;
+  regenerateElement();
+}
+
+function deleteItem(item) {
+  for (let i = 0; i < allShelves.length; i++) {
+    if (allShelves[i].id == item.id) {
+      allShelves.splice(i, 1);
+    }
+    regenerateElement();
   }
 }
