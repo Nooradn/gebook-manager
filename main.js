@@ -47,39 +47,53 @@ function addNewBook() {
 
   createBookElement(bookData);
 
+  console.log("added new book");
   console.log({ nowReadingShelf, hasReadedShelf });
   return bookData;
 }
 
 // -----------------------------------------------
 
-// create book html element
+// create a book html element
 function createBookElement(item) {
   const containerAddedBook = document.createElement("article");
   containerAddedBook.classList.add("container-book-item");
 
-  // create book desc
+  // create book description elements
   const bookDescElement = document.createElement("div");
   bookDescElement.innerHTML = `
     <h3>${item.title}</h3>
     <p>${item.author} - ${item.year}</p>`;
 
-  // button thingy
+  // build button templates
   const actionButtons = document.createElement("div");
   actionButtons.classList.add("container-action");
 
   const markReadBtn = document.createElement("button");
   markReadBtn.classList.add("mark-readed-act");
   markReadBtn.innerText = "Mark Read";
+  markReadBtn.addEventListener("click", function () {
+    // markRead(item.id);
+    console.log("clicked markRead", item.id);
+  });
 
   const markUnreadBtn = document.createElement("button");
   markUnreadBtn.classList.add("mark-unread-act");
   markUnreadBtn.innerText = "Mark Unread";
+  markUnreadBtn.addEventListener("click", function () {
+    // markUnread(item.id);
+    console.log("clicked markUnread", item.id);
+  });
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete-act");
   deleteBtn.innerText = "Delete Book";
+  deleteBtn.addEventListener("click", function () {
+    // deleteItem(item.id);
+    console.log("clicked deleteItem", item.id);
+  });
 
+  // if-else logics to build html element
   if (!item.isComplete) {
     actionButtons.appendChild(markReadBtn);
     actionButtons.appendChild(deleteBtn);
@@ -93,9 +107,7 @@ function createBookElement(item) {
 
   if (!item.isComplete) {
     nowReadingContainer.prepend(containerAddedBook);
-    nowReadingShelf.push(item);
   } else {
     hasReadedContainer.prepend(containerAddedBook);
-    hasReadedShelf.push(item);
   }
 }
