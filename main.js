@@ -1,5 +1,10 @@
-const bookShelf = [];
+// Main JS
 
+// book data
+const unreadShelf = [];
+const readedShelf = []
+
+// 1st func after all html elements loaded 
 document.addEventListener("DOMContentLoaded", function () {
   const inputBook = document.getElementById("input-book");
   inputBook.addEventListener("submit", function (e) {
@@ -8,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+// submit book button
 function onSubmitBook() {
   const id = +new Date();
   const title = document.getElementById("input-book-title").value;
@@ -55,12 +62,17 @@ function onSubmitBook() {
 
   if (!isComplete) {
     containerReading.prepend(containerAddedBook);
+    unreadShelf.push(bookData);
   } else {
     containerReaded.prepend(containerAddedBook);
+    readedShelf.push(bookData);
   }
 
-  bookShelf.push(bookData);
-  console.log(bookShelf);
-  console.log(bookData);
+
+
+  console.log({unreadShelf, readedShelf});
   return bookData;
+  
 }
+
+

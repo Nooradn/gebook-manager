@@ -6,7 +6,9 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Red Hat Display', sans-serif;
+    transition: 0.3s;
 }
+
 
 header {
     background-color: teal;
@@ -100,7 +102,7 @@ h2 {
     font-weight: 800;
     font-size: 19px;
     border-radius: 15px;
-    transition: 0.3s;
+    
 }
 
 #submit-book:hover {
@@ -118,7 +120,7 @@ h2 {
     border-radius: 7px;
     padding: 25px;
     margin-bottom: 25px;
-    transition: 0.3s;
+    
 }
 
 .container-book-item:hover {
