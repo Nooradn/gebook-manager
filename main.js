@@ -1,7 +1,7 @@
 // Main JS
 
 // book array data
-const allShelves = [];
+let allShelves = [];
 
 // book html container
 const nowReadingContainer = document.getElementById("now-book-reading");
@@ -11,11 +11,23 @@ const hasReadedContainer = document.getElementById("readed-book-almanac");
 
 // start from here
 document.addEventListener("DOMContentLoaded", function () {
+  // refill shelves with saved library
+  const localCache = localStorage.getItem("bookLibrary");
+  if (localCache) {
+    const cachedData = JSON.parse(localCache);
+    allShelves = cachedData;
+    regenerateElement();
+  }
   const inputBook = document.getElementById("input-book");
   inputBook.addEventListener("submit", function (e) {
     e.preventDefault();
     addNewBook();
   });
+});
+
+// save book data library to localstorage before close tab
+window.addEventListener("beforeunload", function () {
+  localStorage.setItem("bookLibrary", JSON.stringify(allShelves));
 });
 
 // -----------------------------------------------
