@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     allShelves = cachedData;
     regenerateElement();
   }
+  // submit button listener standby
   const inputBook = document.getElementById("input-book");
   inputBook.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -44,9 +45,7 @@ function addNewBook() {
   };
 
   allShelves.push(bookData);
-
   createBookElement(bookData);
-
   return bookData;
 }
 
