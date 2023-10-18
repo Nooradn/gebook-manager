@@ -31,7 +31,7 @@ function addNewBook() {
   const id = +new Date();
   const title = document.getElementById("input-book-title").value;
   const author = document.getElementById("input-book-author").value;
-  const year = document.getElementById("input-book-year").value;
+  const year = parseInt(document.getElementById("input-book-year").value);
   const isComplete = document.getElementById("book-completed-check").checked;
 
   // prepare data
